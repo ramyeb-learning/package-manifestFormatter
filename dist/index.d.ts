@@ -1,0 +1,1 @@
+export { printHelloWorld } from './helloWorld';
