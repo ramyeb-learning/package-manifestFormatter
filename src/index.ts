@@ -1,0 +1,2 @@
+export {printHelloWorld} from './helloWorld'
+
