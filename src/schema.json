@@ -1,0 +1,131 @@
+{
+    "$id": "https://example.com/product.schema.json",
+    "title": "Manifest for Live App",
+    "description": "Dapp's manifest file",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Name of the dapp : [lowercase]",
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 20,
+        "pattern": "^[a-z]*$"
+      },
+      "name": {
+        "description": "Name of the dapp, will be showed as title in LL",
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 20,
+        "pattern": "^([a-z|A-Z])*$"
+      },
+      "url": {
+        "description": "website of the dapp",
+        "type": "string",
+        "pattern": "^(https://|www\\.).*\\.[a-z]{1,10}$"
+      },
+      "params": {
+        "type": "object",
+        "properties": {
+          "dappUrl": {
+            "type": "string"
+          },
+          "nanoApp": {
+            "type": "string"
+          },
+          "dappName": {
+            "type": "string"
+          },
+          "networks": {
+            "type":"array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "currency": {
+                  "enum": ["ethereum", "bitcoin", "polkadot"]
+                },
+                "chainID": {
+                  "type":"number",
+                  "exclusiveMinimum": 0
+                },
+                "nodeURL": {
+                  "type":"string"
+                }
+              },
+              "required": [ "currency", "chainID", "nodeURL" ]
+            }
+          }
+        },
+        "required": [ "dappUrl", "nanoApp", "dappName", "networks" ]
+      },
+      "homepageUrl":{
+        "type":"string",
+        "pattern": "^(https://|www\\.).*\\.[a-z]{1,10}$"
+      },
+      "icon": {
+      "type":"string",
+      "pattern": "^(https://|www\\.).*\\.png|jpg|jpeg|png$"
+      },
+      "platform": {
+        "type":"string"
+      },
+      "apiVersion": {
+        "type":"string"
+      },
+      "manifestVersion": {
+        "type":"number",
+        "exclusiveMinimum": 0
+      },
+      "branch": {
+        "type":"string"
+      },
+      "categories": {
+        "type":"array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items":{
+         "enum": ["lend", "yield", "swap", "farm"]
+        }
+       },
+       "currencies":  {
+         "type":"array",
+         "minItems": 1,
+         "uniqueItems": true,
+         "items":{
+           "enum": ["ethereum", "bitcoin", "polkadot"]
+         }
+        },
+
+        "content": {
+          "type": "object",
+          "properties": {
+            "shortDescription": {
+                "type":"object",
+                "minProperties": 1,
+                "propertyNames": {
+                  "pattern": "^[a-z]{2}$",
+                  "type":"string"
+                }
+            },
+            "description": {
+              "type":"object",
+              "minProperties": 1,
+              "propertyNames": {
+                "type":"string",
+                "pattern": "^[a-z]{2}$"
+              }
+          }
+          },
+          "required": [ "shortDescription", "description"]
+      },
+      "permissions": {
+        "type":"array"
+      },
+      "domains":{
+        "type":"array"
+      }
+    },
+    "required": [ "id", "name", "params" ],
+    "additionalProperties": false
+  }

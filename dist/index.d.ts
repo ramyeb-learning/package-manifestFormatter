@@ -1,1 +1,1 @@
-export { printHelloWorld } from './helloWorld';
+export { verifyManifest } from './formatter';
