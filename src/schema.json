@@ -126,6 +126,6 @@
         "type":"array"
       }
     },
-    "required": [ "id", "name", "params" ],
+    "required": [ "id", "name", "params", "homepageUrl" ],
     "additionalProperties": false
   }

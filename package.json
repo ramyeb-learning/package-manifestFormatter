@@ -1,6 +1,5 @@
 {
-  "name": "manifestFormatter",
-  "type": "module",
+  "name": "manifestFormatter",  
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -8,11 +7,9 @@
   "files": [
     "/dist"
   ],
-  "bin": {
-    "manifestFormatter": "dist/index.js"
-},
   "scripts": {
-    "test": "jest test/*.test.*"
+    "test": "jest test/*.test.*",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

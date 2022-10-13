@@ -1,7 +1,11 @@
 import Ajv from "ajv"
 import SchemaJSON from './schema.json'
 
-export const verifyManifest = (manifest: JSON, {details, steps, disableState}: {details?: boolean, steps?: boolean, disableState?: boolean}): boolean =>  {
+type VerifyManifestParams = {
+    details?: boolean, steps?: boolean, disableState?: boolean
+}
+
+export const verifyManifest = (manifest: JSON, {details, steps, disableState}: VerifyManifestParams ): boolean =>  {
     const ajv = new Ajv({allErrors: !steps})
     const validate = ajv.compile(SchemaJSON)
 
@@ -18,5 +22,4 @@ export const verifyManifest = (manifest: JSON, {details, steps, disableState}: {
         !disableState && console.log("The JSON file do not correspond to the schema")
     }
     return false
-   
 }
