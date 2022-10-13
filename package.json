@@ -7,6 +7,9 @@
   "files": [
     "/dist"
   ],
+  "bin": {
+    "format": "dist/formatterCLI.js"
+},
   "scripts": {
     "test": "jest test/*.test.*",
     "build": "tsc"
