@@ -1,3 +1,4 @@
+#!/usr/bin/env node 
 import * as fs from 'fs';
 import path from 'path';
 import {verifyManifest} from "./formatter"
@@ -8,12 +9,11 @@ const verifyManifestFromCLI = (): void | never => {
 
         let details = process.argv.includes('-details')
         let steps = process.argv.includes('-steps')
-        let disableState = process.argv.includes('-disableState')
+        let enableState = process.argv.includes('-disableState')
         fs.readdir(process.argv[2], (err, files) => {
-            files.forEach(file => {
-                console.log("------"+file+"------")
-               if(!verifyManifest(JSON.parse(fs.readFileSync(path.join(process.cwd(),process.argv[2],file), 'utf-8')), {details, steps, disableState})){
-                throw new Error("The JSON file : " + file +" do not correspond to the schema");
+            files.forEach(fileName => {
+               if(!verifyManifest(JSON.parse(fs.readFileSync(path.join(process.cwd(),process.argv[2],fileName), 'utf-8')), {details, steps, enableState, fileName})){
+                throw new Error("The JSON file : " + fileName + " do not correspond to the schema");
                }
             })
           })
