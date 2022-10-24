@@ -7,3 +7,5 @@ How to use : 2 ways
 explain function and options
 
 Schema : explain all the properties of the schema
+
+more infos about the manifest here : 
